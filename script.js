@@ -4,6 +4,9 @@ let won = 0;
 let lost = 0;
 let drawn = 0; 
 
+//begin the game
+game();
+
 //play a round of rock paper scissors
 function playRound(playerSelection, computerSelection) {
 	if (playerSelection == computerSelection){
@@ -17,7 +20,6 @@ function playRound(playerSelection, computerSelection) {
 		won++;	
 	}
 }
-
 //randomizes computer choice
 function computerPlay(){
 	let n = Math.floor(Math.random()*3);
@@ -29,26 +31,23 @@ function computerPlay(){
 		return "scissors";
 	}
 }
+//player selection
+function playerPLay(){
+	const playerEntry = prompt("Type rock paper or scissors");
+	const playerEntry2 = playerEntry.toLowerCase();
+	return playerEntry2;
+}
+
 //plays 5 rounds and displays scoreboard
 function game(){
 	while(rounds<5){
-		const playerEntry = prompt("Type rock paper or scissors");
-		const playerSelection = playerEntry.toLowerCase();
+		const playerSelection = playerPLay();
 		const computerSelection = computerPlay();
 		console.log(playRound(playerSelection, computerSelection));
 		console.log("Scoreboard: Won: " + won + " Lost: " + lost + " Drawn: " + drawn );
-		
 		rounds++;
 	}
 
 }
 
-//begin the game
-let wantPlay = prompt("Want to play rock paper sicissors? Y/N");
-let play = wantPlay.toLowerCase();
 
-if (play == "y"){
-	game();
-}else if (play == "n"){
-	console.log("GO AWAY THEN!");
-}
